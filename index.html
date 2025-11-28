@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WACV 2026 Paper | Enhanced Back-Projection of Vision Features for 3D Symmetry Detection</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="theme-toggle">
+		<button id="theme-toggle" class="button is-small" aria-label="Toggle light and dark mode">
+			<span class="icon">
+				<svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="5"></circle>
+					<line x1="12" y1="1" x2="12" y2="3"></line>
+					<line x1="12" y1="21" x2="12" y2="23"></line>
+					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+					<line x1="1" y1="12" x2="3" y2="12"></line>
+					<line x1="21" y1="12" x2="23" y2="12"></line>
+					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+				</svg>
+			</span>
+			<span id="theme-label">Light Mode</span>
+		</button>
+	</div>
+
+	<section class="hero is-medium">
+		<div class="hero-body">
+			<div class="container">
+				<span class="tag is-link is-light is-size-6">WACV 2026</span>
+				<h1 class="title is-2 mt-4">Enhanced Back-Projection of Vision Features for 3D Symmetry Detection</h1>
+				<h2 class="subtitle is-5"></h2>
+
+				<div class="author-list mt-5">
+					<p class="is-size-5 author-names">
+						<a href="https://www.spulp.cl" rel="noopener">Isaac Aguirre</a>
+						<a href="https://www.ivan-sipiran.com" rel="noopener">Ivan Sipiran</a>
+					</p>
+					<p class="is-size-6 has-text-grey mt-2">Department of Computer Science, University of Chile</p>
+				</div>
+
+				<div class="buttons mt-5">
+					<a class="button is-link" href="#">
+						<span class="icon is-small" aria-hidden="true">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M8 3h7l4 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+								<path d="M15 3v4h4"/>
+								<text x="50%" y="72%" text-anchor="middle" font-size="7" font-family="Arial, Helvetica, sans-serif" fill="currentColor">PDF</text>
+							</svg>
+						</span>
+						<span>Paper</span>
+					</a>
+					<a class="button is-info" href="#">
+						<span class="icon is-small" aria-hidden="true">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+								<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.302 3.438 9.799 8.205 11.387.6.111.82-.261.82-.58 0-.287-.011-1.243-.017-2.255-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.758-1.333-1.758-1.089-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.776.419-1.305.762-1.605-2.665-.305-5.466-1.332-5.466-5.931 0-1.311.469-2.382 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 6.005 0c2.291-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.873.119 3.176.77.839 1.235 1.91 1.235 3.221 0 4.61-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222 0 1.606-.015 2.899-.015 3.293 0 .321.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+							</svg>
+						</span>
+						<span>Code</span>
+					</a>
+					<!-- <a class="button is-light" href="#" target="_blank" rel="noopener">Other</a> -->
+				</div>
+
+                <div class="mt-5">
+                    <img src="intro_img.png" alt="Introduction Image">
+                </div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<h3 class="title is-4">Abstract</h3>
+					<div class="box content">
+						<p>
+We propose two algorithms for 3D symmetry detection based on enhanced back-projection of vision features extracted from foundation vision models such as DINOv2. Our method enhances back-projection by rendering multiple views of 3D objects, extracting features, and projecting them onto the geometry with two key improvements—Fibonacci view sampling and view rotations—that increase robustness and accuracy. Using these features, we detect symmetry planes and axes through two dedicated algorithms. Experiments on ShapeNet show that our plane detection approach outperforms both traditional geometric and learning-based methods by a wide margin. The method is also efficient, running in seconds on a single 8GB GPU, making it practical for large-scale or real-world applications. Overall, our results demonstrate that enhanced back-projection of vision features offers a simple yet effective framework for solving fundamental 3D geometric problems such as symmetry detection.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="columns is-centered mt-6">
+				<div class="column is-8">
+					<h3 class="title is-4">BibTeX</h3>
+                    <pre class="box"><code>@InProceedings{Aguirre_2026_WACV,
+    author    = {Aguirre, Isaac and Sipiran, Ivan},
+    title     = {Enhanced Back-Projection of Vision Features for 3D Symmetry Detection},
+    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {-},
+    year      = {2026},
+    pages     = {-}
+}
+</code></pre>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="content has-text-centered">
+			<p>Hello :)</p>
+		</div>
+	</footer>
+
+	<script>
+		const themeToggleButton = document.getElementById('theme-toggle');
+		const themeIcon = document.getElementById('theme-icon');
+		const themeLabel = document.getElementById('theme-label');
+		const storedTheme = window.localStorage.getItem('wacv-theme');
+
+		const setTheme = (theme) => {
+			document.documentElement.dataset.theme = theme;
+			window.localStorage.setItem('wacv-theme', theme);
+			if (theme === 'dark') {
+				themeLabel.textContent = 'Dark Mode';
+				themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+			} else {
+				themeLabel.textContent = 'Light Mode';
+				themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+			}
+		};
+
+		if (storedTheme === 'dark' || storedTheme === 'light') {
+			setTheme(storedTheme);
+		} else {
+			setTheme('light');
+		}
+
+		themeToggleButton.addEventListener('click', () => {
+			const currentTheme = document.documentElement.dataset.theme;
+			setTheme(currentTheme === 'light' ? 'dark' : 'light');
+		});
+	</script>
+</body>
+</html>
