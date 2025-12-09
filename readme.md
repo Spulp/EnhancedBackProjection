@@ -1,22 +1,10 @@
-# Work in Progress
+# Enhanced Back-Projection of Vision Features for 3D Symmetry Detection
+
+[_WACV 2026_](https://wacv.thecvf.com/Conferences/2026) — _Work in Progress_
 
 This repository is actively being prepared for release. Additional code modules and the associated datasets will be uploaded soon to accompany the accepted paper.
 
-## Paper Reference
-
-- **Title:** Enhanced Back-Projection of Vision Features for 3D Symmetry Detection
-- **Citation:**
-
-```bibtex
-@InProceedings{Aguirre_2026_WACV,
-    author    = {Aguirre, Isaac and Sipiran, Ivan},
-    title     = {Enhanced Back-Projection of Vision Features for 3D Symmetry Detection},
-    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
-    month     = {-},
-    year      = {2026},
-    pages     = {-}
-}
-```
+Project page: [https://spulp.github.io/EnhancedBackProjection/](https://spulp.github.io/EnhancedBackProjection/)
 
 # Important
 ## Environment Setup
@@ -113,3 +101,18 @@ When executing, a visual interface pops up. The console will display commands fo
 - Press `q` to quit
 
 ---
+
+## Citation
+
+If you find this useful or build on this work, please cite the paper below:
+
+```bibtex
+@InProceedings{Aguirre_2026_WACV,
+  author    = {Aguirre, Isaac and Sipiran, Ivan},
+  title     = {Enhanced Back-Projection of Vision Features for 3D Symmetry Detection},
+  booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+  month     = {-},
+  year      = {2026},
+  pages     = {-}
+}
+```
