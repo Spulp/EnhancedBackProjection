@@ -36,14 +36,14 @@
 
 				<div class="author-list mt-5">
 					<p class="is-size-5 author-names">
-						<a href="https://www.spulp.cl" rel="noopener">Isaac Aguirre</a>
-						<a href="https://www.ivan-sipiran.com" rel="noopener">Ivan Sipiran</a>
+						<a href="https://www.spulp.cl" rel="noopener"><u>Isaac Aguirre</u></a>
+						<a href="https://www.ivan-sipiran.com" rel="noopener"><u>Ivan Sipiran</u></a>
 					</p>
 					<p class="is-size-6 has-text-grey mt-2">Department of Computer Science, University of Chile</p>
 				</div>
 
 				<div class="buttons mt-5">
-					<a class="button is-link" href="#">
+					<a class="button is-link" href="https://openaccess.thecvf.com/content/WACV2026/html/Aguirre_Enhanced_Back-Projection_of_Vision_Features_for_3D_Symmetry_Detection_WACV_2026_paper.html" target="_blank" rel="noopener">
 						<span class="icon is-small" aria-hidden="true">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M8 3h7l4 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
@@ -61,7 +61,27 @@
 						</span>
 						<span>Code</span>
 					</a>
-					<!-- <a class="button is-light" href="#" target="_blank" rel="noopener">Other</a> -->
+					<a class="button is-light" href="https://github.com/Spulp/EnhancedBackProjection/releases/tag/Datasets" target="_blank" rel="noopener">
+						<span class="icon is-small" aria-hidden="true">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+								<polyline points="14 2 14 8 20 8"></polyline>
+								<line x1="12" y1="11" x2="12" y2="17"></line>
+								<line x1="9" y1="14" x2="15" y2="14"></line>
+							</svg>
+						</span>
+						<span>Datasets</span>
+					</a>
+					<a class="button is-light" href="Poster_WACV_final.png" target="_blank" rel="noopener">
+						<span class="icon is-small" aria-hidden="true">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+								<circle cx="8.5" cy="8.5" r="1.5"></circle>
+								<polyline points="21 15 16 10 5 21"></polyline>
+							</svg>
+						</span>
+						<span>Poster</span>
+					</a>
 				</div>
 
                 <div class="mt-5">
@@ -84,16 +104,109 @@ We propose two algorithms for 3D symmetry detection based on enhanced back-proje
 				</div>
 			</div>
 
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<h3 class="title is-4">Enhanced Back-Projection</h3>
+					<div class="box content">
+						<p>Diagram showing the two key enhancements to back-projection: Fibonacci view sampling and view rotations. These improvements increase the robustness and accuracy of the projected features, leading to better symmetry detection results.</p>
+						<figure class="algo-figure mt-4">
+							<img src="enhancements.png" alt="Diagram showing the two key enhancements to back-projection: Fibonacci view sampling and view rotations">
+							<figcaption>Diagram illustrating the enhanced back-projection process with Fibonacci view sampling and view rotations.</figcaption>
+						</figure>
+						This produces different feature representations: Raw-Mesh (RM), Point Cloud (PC), Feature-Mesh Sampling (FM), where FM performs the same sampling for geometry and features after RM.
+						<figure class="algo-figure mt-4">
+							<img src="feature_representations.png" alt="Diagram showing the different feature representations: Raw-Mesh (RM), Point Cloud (PC), Feature-Mesh Sampling (FM)">
+							<figcaption>Diagram illustrating the different feature representations obtained from the enhanced back-projection process.</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<h3 class="title is-4">Planes Algorithm</h3>
+					<div class="box content">
+						<p>The plane detection algorithm follows these steps:</p>
+						<ol>
+							<li>Group each point into a trio of similar features</li>
+							<li>Compute 4 possible candidate planes</li>
+							<li>Filter planes that pass near the middle of the object, as these represent global symmetries</li>
+							<li>Check resulting planes using Chamfer distance and output the best computed planes</li>
+						</ol>
+						<figure class="algo-figure mt-4">
+							<img src="planes_algo.png" alt="Planes algorithm diagram">
+							<figcaption>Diagram of the plane detection pipeline.</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<h3 class="title is-4">Axes Algorithm</h3>
+					<div class="box content">
+						<p>The axis detection algorithm follows these steps:</p>
+						<ol>
+							<li>Group each point into an L-sized group of similar features</li>
+							<li>Use RANSAC to produce circles for each group</li>
+							<li>Cluster resulting circles from all groups and keep the largest cluster</li>
+							<li>Compute a mean circle and output the axis defined by the mean circle's center and normal vector</li>
+						</ol>
+						<figure class="algo-figure mt-4">
+							<img src="axes_algo.png" alt="Axes algorithm diagram">
+							<figcaption>Diagram of the axis detection pipeline.</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<h3 class="title is-4">Visual Results</h3>
+					<div class="box content">
+						<p>Both algorithms use 114 views with DINOv2 small. Planes use FM10K with Fibonacci sampling and 4 rotations. Axes use RM with Fibonacci sampling and 4 rotations.</p>
+
+						<h4 class="title is-6">Plane Detection Results</h4>
+						<p>FM10K (left) and RM (right), where the right image is for visual reference only to show the plane detected using features from the left image. Red outlines indicate detected symmetry planes.</p>
+						<div class="qual-grid qual-grid-pairs">
+							<img src="qual/planes_clean_1_1.png" alt="Plane qualitative example 1A">
+							<img src="qual/planes_clean_1_2.png" alt="Plane qualitative example 1B">
+							<img src="qual/planes_clean_2_1.png" alt="Plane qualitative example 2A">
+							<img src="qual/planes_clean_2_2.png" alt="Plane qualitative example 2B">
+							<img src="qual/planes_clean_3_1.png" alt="Plane qualitative example 3A">
+							<img src="qual/planes_clean_3_2.png" alt="Plane qualitative example 3B">
+							<img src="qual/planes_clean_4_1.png" alt="Plane qualitative example 4A">
+							<img src="qual/planes_clean_4_2.png" alt="Plane qualitative example 4B">
+							<img src="qual/planes_clean_5_1.png" alt="Plane qualitative example 5A">
+							<img src="qual/planes_clean_5_2.png" alt="Plane qualitative example 5B">
+							<img src="qual/planes_clean_6_1.png" alt="Plane qualitative example 6A">
+							<img src="qual/planes_clean_6_2.png" alt="Plane qualitative example 6B">
+						</div>
+
+						<h4 class="title is-6">Axis Detection Results</h4>
+						<p>Qualitative examples using raw mesh representation. Blue outlines indicate detected rotational symmetry axes.</p>
+						<div class="qual-grid qual-grid-pairs">
+							<img src="qual/axes_clean_1.png" alt="Axis qualitative example 1">
+							<img src="qual/axes_clean_2.png" alt="Axis qualitative example 2">
+							<img src="qual/axes_clean_3.png" alt="Axis qualitative example 3">
+							<img src="qual/axes_clean_4.png" alt="Axis qualitative example 4">
+							<img src="qual/axes_clean_5.png" alt="Axis qualitative example 5">
+							<img src="qual/axes_clean_6.png" alt="Axis qualitative example 6">
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="columns is-centered mt-6">
 				<div class="column is-8">
 					<h3 class="title is-4">BibTeX</h3>
                     <pre class="box"><code>@InProceedings{Aguirre_2026_WACV,
     author    = {Aguirre, Isaac and Sipiran, Ivan},
     title     = {Enhanced Back-Projection of Vision Features for 3D Symmetry Detection},
-    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
-    month     = {-},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {March},
     year      = {2026},
-    pages     = {-}
+    pages     = {66-76}
 }
 </code></pre>
 				</div>
