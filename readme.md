@@ -1,8 +1,6 @@
 # Enhanced Back-Projection of Vision Features for 3D Symmetry Detection
 
-[_WACV 2026_](https://wacv.thecvf.com/Conferences/2026) — _Work in Progress_
-
-This repository is actively being prepared for release. Additional code modules and the associated datasets will be uploaded soon to accompany the accepted paper.
+[_WACV 2026_](https://wacv.thecvf.com/Conferences/2026)
 
 Project page: [https://spulp.github.io/EnhancedBackProjection/](https://spulp.github.io/EnhancedBackProjection/)
 
@@ -102,6 +100,60 @@ When executing, a visual interface pops up. The console will display commands fo
 
 ---
 
+## Datasets
+
+Datasets are included in the release. The `datasets` folder contains text files that list the object IDs for both the full dataset and the 10% subset.
+
+## Evaluation Scripts
+
+Python scripts for evaluating methods and datasets are located in the `evaluation` folder.
+
+Run them from the repository root:
+```bash
+python evaluation/script.py <params>
+```
+
+### Parameters for Plane/Axis Computation Scripts
+
+Use the following arguments when running the dataset scripts for plane/axis computation:
+
+```python
+(
+  dataset_folder,
+  output_folder,
+  objects_file_path=None,
+  gpu_device="cuda:0",
+  ds_small=True,
+  ds_reg=True,
+  rot_aug=3,
+  view_samp=1,
+  fm_samp=10000,
+  pc_samp=None,
+  ...
+)
+```
+
+| Parameter | Default | Description |
+|---|---|---|
+| `dataset_folder` | *(required)* | Path to the input dataset directory. |
+| `output_folder` | *(required)* | Path where output files/results are saved. |
+| `objects_file_path` | `None` | Optional path to a text file with object IDs to process. If `None`, all objects are processed. |
+| `gpu_device` | `"cuda:0"` | Device used for computation (for example, the first CUDA GPU). |
+| `ds_small` | `True` | Use the small DinoV2 model variant. |
+| `ds_reg` | `True` | Use DinoV2 registers. |
+| `rot_aug` | `3` | Number/type of rotation augmentations per object (see mapping below). |
+| `view_samp` | `1` | View sampling strategy: `0` = standard, `1` = Fibonacci. |
+| `fm_samp` | `10000` | Number of samples for Feature-Mesh mode. |
+| `pc_samp` | `None` | Number of samples for Point-Cloud mode. |
+
+**`rot_aug` mapping**
+
+- `0`: `(0)`
+- `1`: `(0, 180)`
+- `2`: `(0, 90, 270)`
+- `3`: `(0, 90, 180, 270)`
+- `4`: `(0, 0, 0, 0)`
+
 ## Citation
 
 If you find this useful or build on this work, please cite the paper below:
@@ -110,9 +162,9 @@ If you find this useful or build on this work, please cite the paper below:
 @InProceedings{Aguirre_2026_WACV,
   author    = {Aguirre, Isaac and Sipiran, Ivan},
   title     = {Enhanced Back-Projection of Vision Features for 3D Symmetry Detection},
-  booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
-  month     = {-},
+  booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  month     = {March},
   year      = {2026},
-  pages     = {-}
+  pages     = {66-76}
 }
 ```
